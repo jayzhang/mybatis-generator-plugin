@@ -355,7 +355,7 @@ public class MybatisPlusPlugin extends PluginAdapter {
         foreachOrder.addElement(chooseAsc);
         XmlElement whenAsc = new XmlElement("when");
         chooseAsc.addElement(whenAsc);
-        whenAsc.addAttribute(new Attribute("test",  "${field.asc}"));
+        whenAsc.addAttribute(new Attribute("test",  "field.asc"));
         whenAsc.addElement(new TextElement("ASC"));
         XmlElement otherwiseAsc = new XmlElement("otherwise");
         otherwiseAsc.addElement(new TextElement("DESC"));
