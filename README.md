@@ -73,29 +73,24 @@
 ## Mapper更加简洁
 生成的Mapper基于MybatisPlus，Mapper接口和xml更加简洁<br />例如：
 ```java
-package com.qxwz.hermes.dao.mapper;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.qxwz.hermes.dao.entity.HermesDeviceAccount;
-import java.util.List;
-
-public interface HermesDeviceAccountMapper extends BaseMapper<HermesDeviceAccount> {
-    int insertBatch(List<HermesDeviceAccount> records);
+public interface Table1Mapper extends BaseMapper<Table1> {
+    int insertBatch(List<Table1> records);
 }
 ```
 <a name="ImEr4"></a>
 ## Entity功能更完善
 生成的Java Entity类基于lombok，属性的存取方法更加简洁，同时支持链式属性设置，例如：
 ```java
-HermesDeviceAccount acc = new HermesDeviceAccount();
-     acc.setBind(0)
+Table1 record = new Table1();
+     record.setBind(0)
      .setConnectType("SDK")
      .setStatus(0)
      .setPassword(RandomStringUtils.randomAlphabetic(8));
 ```
 另外，Entity对象内嵌Fields枚举类，可以方便获得对象的数据库字段名以及映射关系：
 ```java
-String column = HermesDeviceAccount.Fields.bind.getColumn();
+String column = Table1.Fields.bind.getColumn();
 System.out.println(column);
 ```
 对于字符串类型的字段，自动生成长度限制等校验注解，例如对于数据库中字段定义为varchar(30)
