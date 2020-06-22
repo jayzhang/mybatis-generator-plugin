@@ -9,7 +9,7 @@
 # 1.引入工具maven依赖
 ```xml
 <dependency>
-     <groupId>com.jay</groupId>
+     <groupId>io.github.jayzhang</groupId>
      <artifactId>mybatis-generator-plugin</artifactId>
      <version>1.0.0</version>
 </dependency>
