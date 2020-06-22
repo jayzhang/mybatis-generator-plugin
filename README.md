@@ -1,4 +1,4 @@
-# 代码生成工具code-gen
+# mybatis-generator插件
 
 <a name="Gamcx"></a>
 # 背景介绍
