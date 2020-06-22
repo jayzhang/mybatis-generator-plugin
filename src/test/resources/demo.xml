@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <classPathEntry
+            location="/Users/username/.m2/repository/mysql/mysql-connector-java/5.1.45/mysql-connector-java-5.1.45.jar"/>
+    <context id="Mysql" targetRuntime="MyBatis3" defaultModelType="flat">
+        <property name="autoDelimitKeywords" value="false"/>
+        <!-- 生成的Java文件的编码 -->
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <!-- 格式化java代码 -->
+        <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+        <!-- 格式化XML代码 -->
+        <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
+
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+        
+        <plugin type="org.jay.mybatis.generator.plugin.MybatisPlusPlugin">
+        	<property name="targetProject" value="src/main/java"/>
+            <property name="targetPackage" value="com.xxx.dao.service"/>
+        	<property name="table1.createBatch" value="true"/>
+        	 <property name="table1.optimizedPage" value="true"/>
+        </plugin> 
+       
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/ntrip"
+                        userId="username" password="yourpassword"/>
+        <javaModelGenerator targetPackage="com.xxx.dao.entity" targetProject="src/main/java">
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <sqlMapGenerator targetPackage="com.xxx.dao.mapper" targetProject="src/main/java"/>
+        <javaClientGenerator targetPackage="com.xxx.dao.mapper" targetProject="src/main/java" type="XMLMAPPER"/>
+ 
+ 		<table tableName="table1" domainObjectName="Table1">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+        </table> 
+     
+    </context>
+</generatorConfiguration>
