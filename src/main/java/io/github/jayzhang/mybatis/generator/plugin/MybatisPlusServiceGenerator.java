@@ -13,7 +13,7 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
-package org.jay.mybatis.generator.plugin;
+package io.github.jayzhang.mybatis.generator.plugin;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -24,14 +24,6 @@ import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
-import org.jay.mybatis.generator.plugin.utils.DateISO8601TimeDeserializer;
-import org.jay.mybatis.generator.plugin.utils.DateISO8601TimeSerializer;
-import org.jay.mybatis.generator.plugin.utils.ISO8601TimeDeserializer;
-import org.jay.mybatis.generator.plugin.utils.ISO8601TimeSerializer;
-import org.jay.mybatis.generator.plugin.utils.ListResult;
-import org.jay.mybatis.generator.plugin.utils.MyDateTimeFormat;
-import org.jay.mybatis.generator.plugin.utils.OrderByField;
-import org.jay.mybatis.generator.plugin.utils.String2StringListDeserializer;
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.dom.java.CompilationUnit;
@@ -56,6 +48,15 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.google.common.base.Joiner;
 import com.google.common.base.Splitter;
+
+import io.github.jayzhang.mybatis.generator.plugin.utils.DateISO8601TimeDeserializer;
+import io.github.jayzhang.mybatis.generator.plugin.utils.DateISO8601TimeSerializer;
+import io.github.jayzhang.mybatis.generator.plugin.utils.ISO8601TimeDeserializer;
+import io.github.jayzhang.mybatis.generator.plugin.utils.ISO8601TimeSerializer;
+import io.github.jayzhang.mybatis.generator.plugin.utils.ListResult;
+import io.github.jayzhang.mybatis.generator.plugin.utils.MyDateTimeFormat;
+import io.github.jayzhang.mybatis.generator.plugin.utils.OrderByField;
+import io.github.jayzhang.mybatis.generator.plugin.utils.String2StringListDeserializer;
 
 public class MybatisPlusServiceGenerator extends AbstractJavaGenerator {
 

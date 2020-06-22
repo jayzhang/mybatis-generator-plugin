@@ -10,7 +10,6 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<springframework_version>4.3.23.RELEASE</springframework_version>
-		<pscommon_version>1.7.0</pscommon_version>
 	</properties>
 
 	<dependencies>
@@ -77,12 +76,7 @@
 			<artifactId>hibernate-validator</artifactId>
 			<version>5.3.5.Final</version>
 		</dependency>
-	   	
-		<dependency>
-            <groupId>com.googlecode.libphonenumber</groupId>
-            <artifactId>carrier</artifactId>
-            <version>1.99</version>
-        </dependency>
+	   	 
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
@@ -121,6 +115,15 @@
 			</plugin>
 		</plugins>
 	</build>
-
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 
 </project>

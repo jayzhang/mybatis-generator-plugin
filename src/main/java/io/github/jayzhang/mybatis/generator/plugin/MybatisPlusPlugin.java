@@ -1,4 +1,4 @@
-package org.jay.mybatis.generator.plugin;
+package io.github.jayzhang.mybatis.generator.plugin;
 
 import static org.mybatis.generator.internal.util.StringUtility.stringHasValue;
 
@@ -10,10 +10,6 @@ import java.util.Properties;
 import java.util.stream.Collectors;
 
 import org.apache.commons.lang.StringUtils;
-import org.jay.mybatis.generator.plugin.utils.DateISO8601TimeDeserializer;
-import org.jay.mybatis.generator.plugin.utils.DateISO8601TimeSerializer;
-import org.jay.mybatis.generator.plugin.utils.ISO8601TimeDeserializer;
-import org.jay.mybatis.generator.plugin.utils.ISO8601TimeSerializer;
 import org.mybatis.generator.api.GeneratedJavaFile;
 import org.mybatis.generator.api.GeneratedXmlFile;
 import org.mybatis.generator.api.IntrospectedColumn;
@@ -53,6 +49,10 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.google.common.base.Joiner;
 import com.google.common.base.Splitter;
 
+import io.github.jayzhang.mybatis.generator.plugin.utils.DateISO8601TimeDeserializer;
+import io.github.jayzhang.mybatis.generator.plugin.utils.DateISO8601TimeSerializer;
+import io.github.jayzhang.mybatis.generator.plugin.utils.ISO8601TimeDeserializer;
+import io.github.jayzhang.mybatis.generator.plugin.utils.ISO8601TimeSerializer;
 import lombok.Getter;
 
 public class MybatisPlusPlugin extends PluginAdapter {
@@ -350,7 +350,20 @@ public class MybatisPlusPlugin extends PluginAdapter {
         foreachOrder.addAttribute(new Attribute("collection",  "orderByFields"));
         foreachOrder.addAttribute(new Attribute("item",  "field"));
         foreachOrder.addAttribute(new Attribute("separator",  ","));
-        foreachOrder.addElement(new TextElement("${field.field}"));
+        
+        
+        for (IntrospectedColumn introspectedColumn : introspectedTable.getNonPrimaryKeyColumns())
+        {
+        	String javaField = introspectedColumn.getJavaProperty();
+        	
+        	XmlElement ifField = new XmlElement("if");
+        	ifField.addAttribute(new Attribute("test",  "field.field.equals('"+javaField+"')"));
+        	ifField.addElement(new TextElement(introspectedColumn.getActualColumnName()));
+        	foreachOrder.addElement(ifField);
+        }
+        
+//        foreachOrder.addElement(new TextElement("${field.field}"));
+        
         XmlElement chooseAsc = new XmlElement("choose");
         foreachOrder.addElement(chooseAsc);
         XmlElement whenAsc = new XmlElement("when");

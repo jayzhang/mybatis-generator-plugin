@@ -1,4 +1,4 @@
-package org.jay.mybatis.generator.plugin.utils;
+package io.github.jayzhang.mybatis.generator.plugin.utils;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,22 +11,18 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.google.common.base.Splitter;
 
-public class String2DoubleListDeserializer extends JsonDeserializer<List<Double>> {
+public class String2StringListDeserializer extends JsonDeserializer<List<String>> {
 
 	@Override
-	public List<Double> deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JsonProcessingException 
+	public List<String> deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JsonProcessingException 
 	{
-		List<Double> result = new ArrayList<>();
+		List<String> result = new ArrayList<>();
 		JsonToken jt = p.currentToken();
         if (jt == JsonToken.VALUE_STRING) 
         {
         	String txt = p.getValueAsString();
         	List<String> list = Splitter.on(",").splitToList(txt);
-        	 
-        	for(String i: list)
-        	{
-        		result.add(Double.parseDouble(i));
-        	}
+        	result.addAll(list);
         	return result;
         }
         return null;

@@ -1,4 +1,4 @@
-package org.jay.mybatis.generator.plugin;
+package io.github.jayzhang.mybatis.generator.plugin;
 
 import java.io.File;
 import java.io.IOException;

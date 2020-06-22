@@ -1,4 +1,4 @@
-package org.jay.mybatis.generator.plugin;
+package io.github.jayzhang.mybatis.generator.plugin;
 
 import java.util.List;
 
@@ -12,10 +12,6 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.jay.mybatis.generator.plugin.utils.DateISO8601TimeSerializer;
-import org.jay.mybatis.generator.plugin.utils.DoubleSerializer;
-import org.jay.mybatis.generator.plugin.utils.ISO8601TimeDeserializer;
-import org.jay.mybatis.generator.plugin.utils.ISO8601TimeSerializer;
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.dom.java.Field;
@@ -29,6 +25,10 @@ import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+import io.github.jayzhang.mybatis.generator.plugin.utils.DateISO8601TimeSerializer;
+import io.github.jayzhang.mybatis.generator.plugin.utils.DoubleSerializer;
+import io.github.jayzhang.mybatis.generator.plugin.utils.ISO8601TimeDeserializer;
+import io.github.jayzhang.mybatis.generator.plugin.utils.ISO8601TimeSerializer;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;

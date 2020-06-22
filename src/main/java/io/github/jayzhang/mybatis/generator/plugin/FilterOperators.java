@@ -1,4 +1,4 @@
-package org.jay.mybatis.generator.plugin;
+package io.github.jayzhang.mybatis.generator.plugin;
 
 public interface FilterOperators {
 	public static final String EQ = "eq";
