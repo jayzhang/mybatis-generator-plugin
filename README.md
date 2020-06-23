@@ -15,6 +15,15 @@
 # 插件介绍
 插件名字：com.qxwz.mybatis.generator.plugin.MybatisPlusPlugin
 
+## maven坐标
+```
+<dependency>
+  <groupId>io.github.jayzhang</groupId>
+  <artifactId>mybatis-generator-plugin</artifactId>
+  <version>1.0.0</version>
+</dependency>
+```
+
 ## 参考配置文件
 ```
 <?xml version="1.0" encoding="UTF-8"?>
