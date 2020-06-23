@@ -23,5 +23,18 @@
 hs_err_pid*
 /target/
 
+# ignore .classpath
+.classpath
+
+# ignore .project
+.project
+
 # ignore .settings
 .settings/
+
+# ignore target
+target
+.idea
+/bin/
+*.iml
+.DS_Store
