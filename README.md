@@ -1,3 +1,5 @@
+# mybatis-generator插件
+
 # 背景介绍
 
 **MyBatis**是apache的一个开源项目，当前比较流行的一个数据库持久层框架。它对jdbc的操作数据库的过程进行封装，使开发者只需要关注SQL本身，而不需要花费精力去处理例如注册驱动、创建connection、创建statement、手动设置参数、结果集检索等jdbc繁杂的过程代码。Mybatis通过xml或注解的方式将要执行的各种statement（statement、preparedStatemnt、CallableStatement）配置起来，并通过java对象和statement中的sql进行映射生成最终执行的sql语句，最后由mybatis框架执行sql并将结果映射成java对象并返回。
@@ -8,7 +10,7 @@
     
 **MyBatis Plus**是MyBatis的增强工具，在MyBatis的基础上增强，将数据库表的通用CRUD操作通过内置的方式进行封装，通用操作的SQL语句无须定义开发者定义或生成，进一步简化开发、提高效率。
 
-本项目以MyBatis Generator插件方式，实现生成基于Mybatis Plus的DAO层代码（entity、mapper)。同时生成基于DAO的service层代码。实现以下通用的service层接口，增强了翻页查询的能力，并对翻页查询的SQL进行了优化，代替默认SQL实现，提升查询性能。
+本项目以MyBatis Generator插件方式，实现生成基于Mybatis Plus的DAO层代码（entity、mapper)。同时生成基于DAO的service层代码，增强了翻页查询的能力，并对翻页查询的SQL进行了优化，代替默认SQL实现，提升查询性能。
 
 # 插件介绍
 插件名字：com.qxwz.mybatis.generator.plugin.MybatisPlusPlugin
