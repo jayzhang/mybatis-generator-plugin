@@ -161,34 +161,13 @@ public class Table1 implements Serializable, Cloneable {
 
 ## 服务生成
 该插件除了生成entity和mapper文件之外，还会生成DAO层面的service的CRUD代码。 参数配置targetProject和targetPackage指定生成的DAO层service代码的路径和相应的包。
-
 ```
  <property name="targetProject" value="src/main/java"/>
  <property name="targetPackage" value="com.xxx.dao.service"/>
 ```
-
-生成CRUD方法可配置：
-
-| 方法名 | 描述 | 默认值 |
-| --- | --- | --- |
-| get | 是否生成get方法，根据主键查询单条记录 | Y |
-| create | 是否生成create方法，插入单条记录 | Y |
-| createBatch | 是否生成createBatch方法，批量插入 | N |
-| update | 是否生成update方法，根据主键更新单条记录 | Y |
-| delete | 是否生成delete方法，根据主键删除单条记录 | Y |
-| list | 是否生成list方法，支持分页查询 | Y |
-| listAll | 是否生成listAll方法，查询所有记录 | Y |
-| count | 是否生成count方法，计算记录数量 | Y |
-| optimizedPage | 是否对list方法优化翻页查询性能 | N |
-
-默认情况批量插入接口不生成，如果要生成，则需要通过名字为${表名}.${方法名}配置项开启，例如：
+服务生成插件根据数据库DDL的字段描述生成相应方法实现代码，数据库字段描述以字段备注形式存在，用JSON格式描述。该JSON描述定义了字段是否可被更新，是否可以被作为查询条件等属性。
+例如：
 ```
-<property name="table1.createBatch" value="true"/>
-```
-
-## 分页查询增强
-插件会根据数据库DDL的备注字段，自动生成查询过滤条件字段，同时支持翻页、返回字段选择、排序等参数。例如：
-```sql
 CREATE TABLE `table1` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '{"f":"in"}',
   `name` varchar(30) NOT NULL DEFAULT '' COMMENT '{"f":"eq,in,like", "a":["@Pattern(regexp=\\"[0-9a-zA-Z_]*\\", message=\\"必须字母数字下划线组合\\")"],"cmt":"差分账号名，全局唯一，不允许更新"}',
@@ -216,8 +195,30 @@ JSON描述字段说明：
 - f: 生成Service代码时，字段是否可被查询，f过滤操作符可以是eq,like,gt,lt,in,gte,lte中的任意组合，例如 "f":"eq,in"。
 - ut:更新时间，自动更新，必须为BIGINT，默认会加上时间的JSON序列化/反序列化注解
 - ct:创建时间，自动更新，必须为BIGINT，默认会加上时间的JSON序列化/反序列化注解
-- t:表示该字段是时间，对于时间字段，默认会加上时间的JSON序列化/反序列化注解
+- t:表示该字段是时间，必须为BIGINT，对于时间字段，默认会加上时间的JSON序列化/反序列化注解
 - cmt: 字段备注描述
+
+
+生成DAO层servcie的支持以下配置项：
+
+| 配置项名 | 描述 | 默认值 |
+| --- | --- | --- |
+| get | 是否生成get方法，根据主键查询单条记录 | Y |
+| create | 是否生成create方法，插入单条记录 | Y |
+| createBatch | 是否生成createBatch方法，批量插入 | N |
+| update | 是否生成update方法，根据主键更新单条记录 | Y |
+| delete | 是否生成delete方法，根据主键删除单条记录 | Y |
+| list | 是否生成list方法，支持分页查询 | Y |
+| listAll | 是否生成listAll方法，查询所有记录 | Y |
+| count | 是否生成count方法，计算记录数量 | Y |
+| optimizedPage | 是否对list方法优化翻页查询性能 | N |
+
+默认情况批量插入接口不生成，如果要生成，则需要通过名字为${表名}.${方法名}配置项开启，例如：
+```
+<property name="table1.createBatch" value="true"/>
+```
+
+## 分页查询增强
 
 插件会生成查询对象，例table1表，除了生成Table1实体类之外，还会生成查询对象类Table1List，该类定义了一些分页查询的参数。 注意：查询过滤参数中eq过滤算法直接生成对应的字段名，范围查询过滤条件会在原始字段名后添加Gte、Lte、Gt、Lt等名字。列表查询请求参数包含4类：（注意：所有分页查询列表的接口都遵循此规范） 
 - fields:指定返回的字段列表，参见数据结构定义，如果不指定则返回所有字段
