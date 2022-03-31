@@ -12,7 +12,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<springframework_version>4.3.23.RELEASE</springframework_version>
+		<springframework_version>5.3.18</springframework_version>
 	</properties>
 
 	<dependencies>
